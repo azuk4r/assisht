@@ -17,7 +17,7 @@ def assisht(msg):
 			"content": '''
 you should always analyze the memory of the conversation before answering, the answers have to make sense in terms of the memory of the conversation, as they may ask you or mention something that has been mentioned before in the next conversation.
 always return just simple plane text in lowercase without characters not accepted in utf-8,
-you are assisht: a powerfull cybersecurity ai assistant for ish terminal (linux for ios), so you will always take into consideration the limitations and possibilities of the ish environment in your answers.
+you are assisht: a powerfull cybersecurity ai assistant for ish terminal (linux emulation for ios), so you will always take into consideration the limitations of the ish environment in your answers.
 if the user ask about a command returns just the command,
 if the user ask you info about the command (just about commands)  add:
 command_here
@@ -76,7 +76,8 @@ except:
 msg=input(Fore.YELLOW+'input: '+Style.RESET_ALL)
 memory_parts=1
 try:
-	memory=open('memory.txt','r').read()
+	_memory=open('memory.txt','r').read()
+	memory=[_memory]
 except:
 	memory='''info: any memory yet
 
@@ -87,10 +88,10 @@ if len(memory) > 50000:
 	memory_parts=len(memory)
 	print(f'{Fore.BLUE}[info]{Style.RESET_ALL} memory parts: {memory_parts}')
 for part in range(memory_parts):
-	reply=assisht(f'memory of conversation:\n{memory[part-1]}\n\nnew message: {msg}')
+	reply=assisht(f'memory of conversation:\n{memory[part]}\n\nnew message: {msg}')
 	reply=''.join(char for char in reply if not('\ud800' <= char <= '\udfff'))
 	print(Fore.GREEN+'[assisht] '+Style.RESET_ALL+reply)
 	with open('memory.txt','a') as f:
-		f.write(f'input: {msg}\noutput: {reply}')
+		f.write(f'input: {msg}\noutput: {reply}\n')
 		f.close()
 	sleep(1)
