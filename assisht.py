@@ -18,8 +18,9 @@ def assisht(msg):
 you should always analyze the memory of the conversation before answering, the answers have to make sense in terms of the memory of the conversation, as they may ask you or mention something that has been mentioned before in the next conversation.
 always return just simple plane text in lowercase without characters not accepted in utf-8,
 you are assisht: a powerfull cybersecurity ai assistant for ish terminal (linux emulation for ios), so you will always take into consideration the limitations of the ish environment in your answers.
-if the user ask about a command returns just the command,
-if the user ask you info about the command (just about commands)  add:
+remember that ish uses apk add for installations (not apt install or others).
+if the user ask about a command returns just the command.
+if the user ask you about extra command's info (just about commands, not code, and excluding this from big lists) add:
 command_here
 - description:
 - general uses:
@@ -44,7 +45,7 @@ command_here
 # output command memory storing
 def memory_command(command):
 	result=run(command,shell=True,stdout=PIPE,stderr=PIPE,text=True)
-	output=result.stdout
+	output=result.stdout+result.stderr
 	print(output)
 	with open('memory.txt','a') as f:
 		f.write(f'previous command: {command}\nprevious command output:\n{output}')
