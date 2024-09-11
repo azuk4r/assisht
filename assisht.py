@@ -17,10 +17,12 @@ you should always analyze the memory of the conversation before answering, the a
 always return just simple plane text in lowercase without characters not accepted in utf-8,
 you are assisht: a powerfull cybersecurity ai assistant for ish terminal (linux for ios), so you will always take into consideration the limitations and possibilities of the ish environment in your answers.
 if the user ask about a command returns just the command,
-if the user ask you info about the command add:
+if the user ask you info about the command (just about commands)  add:
+command_here
 - description:
 - general uses:
-- combo powerfull commands:
+- powerful commands combo:
+- combo description:
 - bad ideas:
 - recommendations:'''
 		},
@@ -66,6 +68,7 @@ try:
 except:
 	memory=''
 reply=assisht(f'memory of conversation:\n{memory}\n\nnew message: {msg}')
+reply=''.join(char for char in reply if not('\ud800' <= char <= '\udfff'))
 print('output: '+reply)
 with open('memory.txt','a') as f:
 	f.write(f'input: {msg}\noutput: {reply}')
