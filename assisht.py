@@ -55,8 +55,15 @@ def memory_command(command):
 
 # huge prompts
 def split_memory(max_lines=50000):
-	memory=open('memory.txt','r').read()
+	memory=open('/etc/assisht/memory.txt','r').read()
 	return [memory[i:i + max_lines] for i in range(0, len(memory), max_lines)]
+
+# new memo
+def clean_memory():
+	with open('/etc/assisht/memory.txt','w') as f:
+		f.write('')
+		f.close()
+	print(f'{Fore.BLUE}[info]{Style.RESET_ALL} successful memory file cleanup')
 
 # args
 parser = ArgumentParser(description='assisht: ai assistant for ish')
@@ -83,18 +90,35 @@ if args.input:
 else:
 	msg=input(f'{Fore.YELLOW}input:{Style.RESET_ALL} ')
 memory_parts=1
+no_memory='''info: any memory yet
+
+'''
 try:
 	_memory=open('/etc/assisht/memory.txt','r').read()
 	memory=[_memory]
 except:
-	memory='''info: any memory yet
+	memory=no_memory
 
-'''
-if len(memory) > 50000:
-	print(f'{Fore.BLUE}[info]{Style.RESET_ALL} huge prompt detected: spliting memory...')
-	memory=split_memory()
-	memory_parts=len(memory)
-	print(f'{Fore.BLUE}[info]{Style.RESET_ALL} memory parts: {memory_parts}')
+# memory checkpoint
+if len(memory[0]) > 50000:
+	print(f'{Fore.MAGENTA}[checkpoint]{Style.RESET_ALL} warning: huge prompt detected')
+	exiting=False
+	while not exiting:
+		checkpoint=input(f'{Fore.MAGENTA}[checkpoint]{Style.RESET_ALL} wanna clean the memory? (y/n): ')
+		if checkpoint=='y':
+			clean_memory()
+			exiting=True
+			memory=no_memory
+		if checkpoint=='n':	
+			print(f'{Fore.BLUE}[info]{Style.RESET_ALL} splitting memory into batchs...')
+			memory=split_memory()
+			memory_parts=len(memory)
+			print(f'{Fore.BLUE}[info]{Style.RESET_ALL} memory parts: {memory_parts}')
+			exiting=True
+		elif not exiting:
+			print(f'{Fore.RED}[error]{Style.RESET_ALL} wrong answer, try again')
+
+# replys 
 for part in range(memory_parts):
 	reply=assisht(f'memory of conversation:\n{memory[part]}\n\nnew message: {msg}')
 	reply=''.join(char for char in reply if not('\ud800' <= char <= '\udfff'))
