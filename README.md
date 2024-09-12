@@ -17,11 +17,11 @@ cd assisht
 ```
 **and then install with:**
 ```
-sh /assisht/install.sh
+sh install.sh
 ```
 **all in one:**
 ```
-git clone https://github.com/azuk4r/assisht && cd assisht && sh /assisht/install.sh
+git clone https://github.com/azuk4r/assisht && cd assisht && sh install.sh
 ```
 ### uninstall
 **to remove all config files:** 
