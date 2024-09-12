@@ -5,9 +5,22 @@ im on vacation having no laptop and im bored, so im doing this ish assistant
 
 [thread in X](https://x.com/azuk4r/status/1833123673135358105)
 
-#### executable command from everywhere setup
+### setup
+#### install
+**clone the repo:**
 ```
-chmod +x assisht.py && cp assisht.py /usr/local/bin
+git clone https://github.com/azuk4r/assisht
 ```
-done? now u can use `assisht.py` directly, try it!
-
+**and then install with:**
+```
+sh install.sh
+```
+**all in one:**
+```
+git clone https://github.com/azuk4r/assisht && sh install.sh
+```
+#### uninstall
+**to remove all config files:** 
+```
+**sh uninstall.sh**
+```
