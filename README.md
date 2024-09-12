@@ -5,8 +5,8 @@ im on vacation having no laptop and im bored, so im doing this ish assistant
 
 [thread in X](https://x.com/azuk4r/status/1833123673135358105)
 
-### setup
-#### install
+# setup
+### install
 **clone the repo:**
 ```
 git clone https://github.com/azuk4r/assisht
@@ -19,8 +19,8 @@ sh install.sh
 ```
 git clone https://github.com/azuk4r/assisht && sh install.sh
 ```
-#### uninstall
+### uninstall
 **to remove all config files:** 
 ```
-**sh uninstall.sh**
+sh uninstall.sh
 ```
