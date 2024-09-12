@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from argparse import ArgumentParser
 from subprocess import run, PIPE
 from colorama import Fore, Style
