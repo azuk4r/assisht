@@ -11,13 +11,17 @@ im on vacation having no laptop and im bored, so im doing this ish assistant
 ```
 git clone https://github.com/azuk4r/assisht
 ```
+**go to the folder:**
+```
+cd assisht
+```
 **and then install with:**
 ```
-sh install.sh
+sh /assisht/install.sh
 ```
 **all in one:**
 ```
-git clone https://github.com/azuk4r/assisht && sh install.sh
+git clone https://github.com/azuk4r/assisht && cd assisht && sh /assisht/install.sh
 ```
 ### uninstall
 **to remove all config files:** 
