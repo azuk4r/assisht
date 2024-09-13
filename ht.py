@@ -67,11 +67,15 @@ def clean_memory():
 
 # args
 parser = ArgumentParser(description='assisht: ai assistant for ish')
-parser.add_argument('--input',required=False,help='prompt input to chat with asissht')
-parser.add_argument('--memory-command',required=False,help='execute a command with output memory storage')
+parser.add_argument('--input','-i',required=False,help='prompt input to chat with asissht')
+parser.add_argument('--memory-command','-mc',required=False,help='execute a command with output memory storage')
+parser.add_argument('--memory-cleanup','-cl',required=False,help='clean the memory file (that delete all the previous conversations in memory')
 args = parser.parse_args()
 if args.memory_command:
 	memory_command(args.memory_command)
+	exit(0)
+if args.memory_cleanup:
+	clean_memory()
 	exit(0)
 
 # load key
@@ -83,12 +87,14 @@ except:
 		f.write(key)
 		f.close()
 
-# run
+# input
 if args.input:
 	msg=args.input
 	print(f'{Fore.YELLOW}[input]{Style.RESET_ALL} {msg}')
 else:
 	msg=input(f'{Fore.YELLOW}input:{Style.RESET_ALL} ')
+
+# memory load
 memory_parts=1
 no_memory='''info: any memory yet
 
