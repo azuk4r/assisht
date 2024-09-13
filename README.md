@@ -23,8 +23,13 @@ sh install.sh
 ```
 git clone https://github.com/azuk4r/assisht && cd assisht && sh install.sh
 ```
+are common but remember to install the requirements (if you don't have them already) with:
+```
+pip install -r requirements.txt
+```
+
 ### uninstall
 **to remove all config files:** 
 ```
-sh uninstall.sh
+sh remove.sh
 ```
