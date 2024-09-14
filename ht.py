@@ -73,7 +73,10 @@ parser.add_argument('--memory-cleanup','-cl',required=False,help='clean the memo
 args = parser.parse_args()
 if args.memory_command:
 	memory_command(args.memory_command)
-	exit(0)
+	if args.input:
+		pass
+	else:
+		exit(0)
 if args.memory_cleanup:
 	clean_memory()
 	exit(0)
