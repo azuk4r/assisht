@@ -117,7 +117,12 @@ if len(memory[0]) > 50000:
 		if checkpoint=='y':
 			clean_memory()
 			exiting=True
-			memory=no_memory
+			if not args.memory_command:
+				memory=no_memory 
+			else:
+				memory_command(args.memory_command)
+				_memory=open('/etc/assisht/memory.txt','r').read()
+				memory=[_memory]
 		if checkpoint=='n':	
 			print(f'{Fore.BLUE}[info]{Style.RESET_ALL} splitting memory into batchs...')
 			memory=split_memory()
