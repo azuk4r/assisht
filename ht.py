@@ -71,14 +71,14 @@ parser.add_argument('--input','-i',required=False,help='prompt input to chat wit
 parser.add_argument('--memory-command','-mc',required=False,help='execute a command with output memory storage')
 parser.add_argument('--memory-cleanup','-cl',required=False,help='clean the memory file (that delete all the previous conversations in memory')
 args = parser.parse_args()
-if args.memory_command:
-	memory_command(args.memory_command)
-	if not args.input:
-		exit(0)
 if args.memory_cleanup:
 	clean_memory()
 	if not args.input:
 		exit(0)
+if args.memory_command:
+        memory_command(args.memory_command)
+        if not args.input:
+                exit(0)
 
 # load key
 try:
