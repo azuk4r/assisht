@@ -50,7 +50,7 @@ def memory_command(command):
 	output=result.stdout+result.stderr
 	print(output)
 	with open('/etc/assisht/memory.txt','a') as f:
-		f.write(f'[{datetime.now()}]\nprevious command: {command}\nprevious command output:\n{output}\n\n')
+		f.write(f'[{datetime.now()}]\nprevious command: {command}\nprevious command output:\n{output}\n')
 		f.close()
 
 # huge prompts
