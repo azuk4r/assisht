@@ -55,7 +55,9 @@ do not use double quotation marks ", always single quotation marks ' except in s
 you will only import the functions to be used from each module, example: from time import sleep.
 always use tabs, not normal spaces.
 if you add comments, they will be technical and to the point.
-no matter in which language they communicate or have communicated with you, the code will always be in english. that rule is only used if the user ask you code.'''
+no matter in which language they communicate or have communicated with you, the code will always be in english. that rule is only used if the user ask you code.
+i insist: even if they speak to you in another language, spanish for example, you will always give all the code in english, including variables, comments or any part of the code, always obligatory the code in english.
+the last rule affects only code, even if you deliver code in english you will still communicate in the language of the conversation.'''
 		},
 		{
 			"role": "user",
