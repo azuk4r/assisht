@@ -42,3 +42,7 @@ sh remove.sh
 | -i / --input | Input prompt for the assistant |
 | -mc / --memory-command | Enter a command to store its output in memory |
 | -cl / --memory-cleanup | Clean all information from the memory file |
+
+---
+
+This project is part of a larger toolkit, which you can find [here](https://github.com/azuk4r/ish-toolkit)
