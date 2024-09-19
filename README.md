@@ -33,3 +33,12 @@ pip install -r requirements.txt
 ```
 sh remove.sh
 ```
+
+## Commands
+
+| COMMAND | DESCRIPTION |
+| ------------- | ------------- |
+| -h / --help | Request help |
+| -i / --input | Input prompt for the assistant |
+| -mc / --memory-command | Enter a command to store its output in memory |
+| -cl / --memory-cleanup | Clean all information from the memory file |
