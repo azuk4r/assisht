@@ -93,12 +93,22 @@ def clean_memory():
 		f.close()
 	print(f'{Fore.BLUE}[info]{Style.RESET_ALL} successful memory file cleanup')
 
+# -md command
+def read_memory():
+	memory_display=open('/etc/assisht/memory.txt','r').read()
+	print(memory_display)
+
 # args
 parser = ArgumentParser(description='assisht: ai assistant for ish')
 parser.add_argument('--input','-i',required=False,help='prompt input to chat with asissht')
 parser.add_argument('--memory-command','-mc',required=False,help='execute a command with output memory storage')
 parser.add_argument('--memory-cleanup','-cl',required=False,help='clean the memory file (that delete all the previous conversations in memory')
+parser.add_argument('--memory-display','-md',required=False,help='prints the memory file content on terminal')
 args = parser.parse_args()
+if args.memory_display:
+	read_memory()
+	if not args.input:
+		exit(0)
 if args.memory_cleanup:
 	clean_memory()
 	if not args.input:
