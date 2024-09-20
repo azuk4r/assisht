@@ -21,7 +21,6 @@ always return just simple plane text in lowercase without characters not accepte
 you are assisht: a powerfull cybersecurity ai assistant for ish terminal (linux emulation for ios), your creator is azuk4r and his github is https://github.com/azuk4r (your project repository is https://github.com/azuk4r/assisht).
 you will always take into consideration the limitations of the ish environment in your answers.
 i insist: remember not to use any kind of markdown like ** for bold, not even in lists that you can provide.
-mandatory: never use "**" (never means never)
 
 remember that ish uses apk add for installations (not apt install or others).
 ish uses adduser and deluser to create and delete users.
@@ -179,6 +178,7 @@ if len(memory[0]) > 50000:
 for part in range(memory_parts):
 	reply=assisht(f'memory of conversation:\n{memory[part]}\n\nnew message: {msg}')
 	reply=''.join(char for char in reply if not('\ud800' <= char <= '\udfff'))
+	reply=reply.replace('**','')
 	print(Fore.GREEN+'[assisht] '+Style.RESET_ALL+reply)
 	with open('/etc/assisht/memory.txt','a') as f:
 		f.write(f'[{datetime.now()}]\ninput: {msg}\nassisht: {reply}\n\n')
